@@ -1,9 +1,12 @@
 # Questionnaire de création d'activité
 
-Version pilote 0.1.0 — programme public destiné à GitHub Pages.
+[Ouvrir le questionnaire](https://timetogrowup.github.io/questionnaire-creation-activite-web/)
 
-90 questions, parcours adaptatif, synthèse explicable et plan d'action à 30, 60 et 90 jours. Outil exploratoire : aucune note globale d'aptitude ni prédiction de réussite.
+Version pilote 0.2.0. 90 questions, parcours adaptatif, synthèse explicable et plan 30/60/90 jours. Outil exploratoire, sans note globale d'aptitude ni prédiction de réussite.
 
-Les réponses restent dans le navigateur. Mémoire seule par défaut, sauvegarde locale choisie ou export JSON. Aucun compte ni transmission automatique des réponses. L'hébergeur peut conserver des journaux de connexion.
+## Correction 0.2
+Les possibilités de réponse sont adaptées aux questions ; le menu générique de statuts est supprimé. La reprise des sauvegardes 0.1 présente un bilan avant remplacement. Les anciennes non-applicabilités non justifiées sont conservées à revoir et suspendent les scores concernés.
 
-La durée et l'utilité restent à tester avec des utilisateurs. Ce dépôt de publication contient uniquement le programme et sa notice ; il ne contient aucune réponse de participant.
+Réponses en mémoire par défaut ; sauvegarde locale choisie ou export JSON. Aucun compte ni transmission automatique des réponses. L'hébergeur peut conserver des journaux de connexion.
+
+Durée et utilité encore à tester avec des utilisateurs. Ce dépôt contient seulement le programme et sa notice, sans réponse de participant.

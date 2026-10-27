@@ -174,7 +174,7 @@ function importSession(text){
  if(obj.context){
   if(typeof obj.context!=="object"||Array.isArray(obj.context))throw Error("Contexte invalide.");
   for(const [key,value] of Object.entries(obj.context)){
-   const allowed=key==="referenceRemuneration"?["paid","unpaid","unknown"]:["present","none","unknown"];
+   const allowed=key==="referenceRemuneration"?["paid","unpaid","unknown"]:key==="professionalExperience"?["present","none","unknown","declined"]:["present","none","unknown"];
    if(!Object.hasOwn(out.context,key)||!allowed.includes(value))throw Error("Contexte non reconnu.");
    out.context[key]=value;
   }
@@ -266,7 +266,7 @@ function questionHtml(id){
  if(id==="Q64"&&route(session).none)extra='<label for="Q64_exploration">Quels domaines, publics à aider ou problèmes à résoudre vous intéressent ?</label><textarea id="Q64_exploration" data-extra="Q64_exploration" maxlength="6000">'+esc(session.complements.Q64_exploration)+'</textarea><p class="small">Cette exploration n’est pas notée. Le marché n’est pas évalué sans projet défini.</p>';
  if(id==="Q32")extra='<div class="section"><h3>Vos trois motivations prioritaires</h3><p class="small">Classement facultatif. Choisissez des motivations différentes, dans l’ordre.</p><div class="ranking">'+[0,1,2].map(i=>'<label>Priorité '+(i+1)+'<select data-ranking="'+i+'"><option value="">Non choisie</option>'+catalogue.questions.filter(q=>q.module===4).map(o=>'<option value="'+o.id+'" '+(session.complements.TOP_MOTIVATIONS?.[i]===o.id?"selected":"")+'>'+esc(o.source_label)+'</option>').join("")+'</select></label>').join("")+'</div></div>';
  if(id==="Q90")extra='<label for="conclusion_libre">Avec vos propres mots, pourquoi envisagez-vous aujourd’hui de créer votre activité ? (facultatif)</label><textarea id="conclusion_libre" data-extra="conclusion_libre" maxlength="6000">'+esc(session.complements.conclusion_libre)+'</textarea><p class="small">Ce texte sera reproduit tel quel, sans être utilisé comme preuve de préparation.</p>';
- if(id==="Q03")extra+=contextControl("professionalExperience","Avez-vous déjà exercé une activité professionnelle ?",[["unknown","Non précisé"],["present","Oui, une activité actuelle ou passée"],["none","Je n'ai jamais exercé d'activité professionnelle"]]);
+ if(id==="Q03")extra+=contextControl("professionalExperience","Avez-vous déjà exercé une activité professionnelle ?",[["unknown","Choisir une réponse (facultatif)"],["present","Oui, une activité actuelle ou passée"],["none","Je n'ai jamais exercé d'activité professionnelle"],["declined","Je préfère ne pas répondre"]]);
  if(id==="Q11")extra+=contextControl("referenceRemuneration","L'activité à laquelle vous vous référez était-elle rémunérée ?",[["unknown","Non précisé"],["paid","Oui"],["unpaid","Non, cette activité n'était pas rémunérée"]]);
  if(id==="Q44")extra+=contextControl("salaryExperience","Avez-vous une expérience salariée, actuelle ou passée ?",[["unknown","Non précisé"],["present","Oui"],["none","Je n'ai jamais été salarié"]]);
  const scope=questionScope(session,id);
